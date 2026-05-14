@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2052767-0237-4162-b331-c796f3ceec0b" name="Changes" comment="" />
+    <list default="true" id="a2052767-0237-4162-b331-c796f3ceec0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="68" />
+    <option name="cachedIndexableFilesCount" value="69" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -29,12 +35,14 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/denner/SSD2/Projetos de Desenvolvimento/Projetos Back-end/ProjetosDecoder/notification",
+    "last_opened_file_path": "/media/denner/SSD3/Projetos de Desenvolvimento/Projetos Back-end/ProjetosDecoder/notification",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -52,6 +60,8 @@
       <updated>1777425431720</updated>
       <workItem from="1777425433018" duration="5000" />
       <workItem from="1777425872733" duration="36000" />
+      <workItem from="1777426905640" duration="3000" />
+      <workItem from="1778542044712" duration="92000" />
     </task>
     <servers />
   </component>
