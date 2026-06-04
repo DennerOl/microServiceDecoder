@@ -30,5 +30,5 @@ public interface UserService {
 
     UserModel updateImage(UserRecordDto userRecordDto, UserModel userModel);
 
-    Page<UserModel> findAll(Specification<UserModel> spec, Pageable pageable);
+    Page<UserModel> findAll(Pageable pageable);
 }

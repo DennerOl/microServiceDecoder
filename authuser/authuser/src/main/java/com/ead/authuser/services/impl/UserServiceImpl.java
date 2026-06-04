@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Page<UserModel> findAll( Pageable pageable) {
+        return userRepository.findAll( pageable);
+    }
+
+    @Override
     public Optional<UserModel> findById(UUID userId) {
         Optional<UserModel> userModelOptional = userRepository.findById(userId);
         if(userModelOptional.isEmpty()){
@@ -90,10 +95,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(userModel);
     }
 
-    @Override
-    public Page<UserModel> findAll(Specification<UserModel> spec, Pageable pageable) {
-        return userRepository.findAll(spec, pageable);
-    }
+
 }
 
 

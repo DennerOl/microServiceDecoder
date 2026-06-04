@@ -4,6 +4,7 @@ import com.ead.authuser.dtos.UserRecordDto;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.services.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,12 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserModel>> getAllUsers(){
-
-        List<UserModel> userModelPage = userService.findAll();
+    public ResponseEntity<Page<UserModel>> getAllUsers(Pageable pageable){
+        Page<UserModel> userModelPage = userService.findAll(pageable);
 
         return ResponseEntity.status(HttpStatus.OK).body(userModelPage);
     }
+
 
     @GetMapping("/{userId}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "userId") UUID userId){
