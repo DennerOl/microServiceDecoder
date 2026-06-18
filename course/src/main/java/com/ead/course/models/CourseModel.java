@@ -55,6 +55,25 @@ public class CourseModel implements Serializable {
     @Column(length = 255)
     private String imageUrl;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<ModuleModel> modules;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public UUID getCourseId() {
