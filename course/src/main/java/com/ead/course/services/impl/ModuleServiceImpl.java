@@ -34,6 +34,7 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Transactional
     @Override
+    // outro delete customizado para evitar o cascade all automatico
     public void delete(ModuleModel moduleModel) {
         List<LessonModel> lessonModelList = lessonRepository.findAllLessonsIntoModule(moduleModel.getModuleId());
         if (!lessonModelList.isEmpty()){

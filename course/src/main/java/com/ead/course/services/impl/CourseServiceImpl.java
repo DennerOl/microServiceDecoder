@@ -38,6 +38,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Transactional
     @Override
+    // delete customizado para evitar o cascata automatico é mais seguro
     public void delete(CourseModel courseModel) {
         List<ModuleModel> moduleModelList = moduleRepository.findAllModulesIntoCourse(courseModel.getCourseId());
         if (!moduleModelList.isEmpty()){

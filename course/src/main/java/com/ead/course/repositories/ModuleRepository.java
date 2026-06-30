@@ -19,12 +19,12 @@ public interface ModuleRepository extends JpaRepository<ModuleModel, UUID>, JpaS
 
 
 //--> Example EntityGraph
-//    @EntityGraph(attributePaths = {"course"})
-//    ModuleModel findByTitle(String title);
+  @EntityGraph(attributePaths = {"course"})
+  ModuleModel findByTitle(String title); // uso em conjunto com carregamento lazy (lento) assim vem os modulos  e seus atributos juntos com cursos
 
 //--> Example Modifying
-//    @Modifying
-//    @Query(value = "delete from tb_modules where course_course_id = :courseId", nativeQuery = true)
-//    void deleteModulesIntoCourse(@Param("courseId") UUID courseId);
+   @Modifying // especifico para deleção ou update
+   @Query(value = "delete from tb_modules where course_course_id = :courseId", nativeQuery = true)
+   void deleteModulesIntoCourse(@Param("courseId") UUID courseId);
 
 }
