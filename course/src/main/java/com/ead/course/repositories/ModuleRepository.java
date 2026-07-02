@@ -20,7 +20,7 @@ public interface ModuleRepository extends JpaRepository<ModuleModel, UUID>, JpaS
 
 //--> Example EntityGraph
   @EntityGraph(attributePaths = {"course"})
-  ModuleModel findByTitle(String title); // uso em conjunto com carregamento lazy (lento) assim vem os modulos  e seus atributos juntos com cursos
+  ModuleModel findByTitle(String title); // uso a anotação em conjunto com carregamento lazy (lento) assim vem os modulos  e seus atributos juntos com cursos
 
 //--> Example Modifying
    @Modifying // especifico para deleção ou update
