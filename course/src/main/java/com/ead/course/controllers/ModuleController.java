@@ -1,21 +1,26 @@
 package com.ead.course.controllers;
 
-import com.ead.course.dtos.CourseRecordDto;
-import com.ead.course.dtos.ModuleRecordDto;
-import com.ead.course.models.CourseModel;
-import com.ead.course.models.ModuleModel;
-import com.ead.course.services.CourseService;
-import com.ead.course.services.ModuleService;
-import com.ead.course.specifications.SpecificationTemplate;
-import jakarta.validation.Valid;
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.UUID;
+import com.ead.course.dtos.ModuleRecordDto;
+import com.ead.course.models.ModuleModel;
+import com.ead.course.services.CourseService;
+import com.ead.course.services.ModuleService;
+import com.ead.course.specifications.SpecificationTemplate;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class ModuleController {
