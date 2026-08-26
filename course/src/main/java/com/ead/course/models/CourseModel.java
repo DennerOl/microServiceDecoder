@@ -56,25 +56,18 @@ public class CourseModel implements Serializable {
     private String imageUrl;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY) // cascade = CascadeType.ALL (deleta o curso e os modulos associados)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    // cascade = CascadeType.ALL (deleta o curso e os modulos associados)
     // orphanRemoval = true (deleta os modulos que não tem associação)
-    @Fetch(FetchMode.SUBSELECT) // jeito que vai fazer a consulta na base de dados (realiza duas consulta uma para trazer os cursos e outra p modulos)
+    @Fetch(FetchMode.SUBSELECT)
+    // jeito que vai fazer a consulta na base de dados (realiza duas consulta uma para trazer os cursos e outra p modulos)
 //    @OnDelete(action = OnDeleteAction.CASCADE) // deleção em cascata mas delega para a base de dados (mais inteligente) mas tomar cuidado com consumo
     private Set<ModuleModel> modules;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private Set<CourseUserModel> coursesUsers;
 
 
     public UUID getCourseId() {
@@ -157,4 +150,11 @@ public class CourseModel implements Serializable {
         this.modules = modules;
     }
 
+    public Set<CourseUserModel> getCoursesUsers() {
+        return coursesUsers;
+    }
+
+    public void setCoursesUsers(Set<CourseUserModel> coursesUsers) {
+        this.coursesUsers = coursesUsers;
+    }
 }
