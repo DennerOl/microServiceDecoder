@@ -20,6 +20,14 @@ public class CourseUserModel implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private CourseModel course;
 
+    public CourseUserModel(UUID id, UUID userId, CourseModel course) {
+        this.id = id;
+        this.userId = userId;
+        this.course = course;
+    }
+
+    public CourseUserModel() {
+    }
 
     public UUID getId() {
         return id;
