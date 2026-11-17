@@ -1,5 +1,18 @@
 package com.ead.course.services.impl;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ead.course.dtos.CourseRecordDto;
 import com.ead.course.exceptions.NotFoundException;
 import com.ead.course.models.CourseModel;
@@ -9,19 +22,6 @@ import com.ead.course.repositories.CourseRepository;
 import com.ead.course.repositories.LessonRepository;
 import com.ead.course.repositories.ModuleRepository;
 import com.ead.course.services.CourseService;
-import com.ead.course.specifications.SpecificationTemplate;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -30,7 +30,8 @@ public class CourseServiceImpl implements CourseService {
     final ModuleRepository moduleRepository;
     final LessonRepository lessonRepository;
 
-    public CourseServiceImpl(CourseRepository courseRepository, ModuleRepository moduleRepository, LessonRepository lessonRepository) {
+    public CourseServiceImpl(CourseRepository courseRepository, ModuleRepository moduleRepository,
+            LessonRepository lessonRepository) {
         this.courseRepository = courseRepository;
         this.moduleRepository = moduleRepository;
         this.lessonRepository = lessonRepository;
@@ -41,10 +42,10 @@ public class CourseServiceImpl implements CourseService {
     // delete customizado para evitar o cascata automatico é mais seguro
     public void delete(CourseModel courseModel) {
         List<ModuleModel> moduleModelList = moduleRepository.findAllModulesIntoCourse(courseModel.getCourseId());
-        if (!moduleModelList.isEmpty()){
-            for(ModuleModel module : moduleModelList){
+        if (!moduleModelList.isEmpty()) {
+            for (ModuleModel module : moduleModelList) {
                 List<LessonModel> lessonModelList = lessonRepository.findAllLessonsIntoModule(module.getModuleId());
-                if (!lessonModelList.isEmpty()){
+                if (!lessonModelList.isEmpty()) {
                     lessonRepository.deleteAll(lessonModelList);
                 }
             }
@@ -75,7 +76,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Optional<CourseModel> findById(UUID courseId) {
         Optional<CourseModel> courseModelOptional = courseRepository.findById(courseId);
-        if(courseModelOptional.isEmpty()){
+        if (courseModelOptional.isEmpty()) {
             throw new NotFoundException("Error: Course not found.");
         }
         return courseModelOptional;

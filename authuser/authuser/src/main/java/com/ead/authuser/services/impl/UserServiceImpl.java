@@ -34,14 +34,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserModel> findAll( Specification<UserModel> spec, Pageable pageable) {
-        return userRepository.findAll(spec, pageable);
-    }
-
-    @Override
     public Optional<UserModel> findById(UUID userId) {
         Optional<UserModel> userModelOptional = userRepository.findById(userId);
-        if(userModelOptional.isEmpty()){
+        if (userModelOptional.isEmpty()) {
             throw new NotFoundException("Error: User not found.");
         }
         return userModelOptional;
@@ -95,7 +90,15 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(userModel);
     }
 
+    @Override
+    public Page<UserModel> findAll(Specification<UserModel> spec, Pageable pageable) {
+        return userRepository.findAll(spec, pageable);
+    }
 
+    @Override
+    public UserModel registerInstructor(UserModel userModel) {
+        userModel.setUserType(UserType.INSTRUCTOR);
+        userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
+        return userRepository.save(userModel);
+    }
 }
-
-

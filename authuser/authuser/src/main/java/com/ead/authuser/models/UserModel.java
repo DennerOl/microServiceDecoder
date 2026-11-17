@@ -1,18 +1,28 @@
 package com.ead.authuser.models;
 
-import com.ead.authuser.enums.UserStatus;
-import com.ead.authuser.enums.UserType;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import org.springframework.hateoas.RepresentationModel;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
+
+import org.springframework.hateoas.RepresentationModel;
+
+import com.ead.authuser.enums.UserStatus;
+import com.ead.authuser.enums.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
@@ -51,24 +61,21 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     @Column(length = 255)
     private String imageUrl;
 
-
-    public UserCourseModel convertToUserCourseModel(UUID courseId){
+    public UserCourseModel convertToUserCourseModel(UUID courseId) {
         return new UserCourseModel(null, courseId, this);
     }
 
-    //    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
+    // @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
-    //    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
+    // @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(nullable = false)
     private LocalDateTime lastUpdateDate;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserCourseModel> usersCourses;
-
-
 
     public UUID getUserId() {
         return userId;
